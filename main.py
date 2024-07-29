@@ -38,6 +38,8 @@ def main():
         st.session_state.page = 'home'
     elif selected == "Account":
         st.session_state.page = 'login'
+    elif selected=="About us":
+        st.write("In Progress...")
 
     # Page content
     if st.session_state.page == 'home':
@@ -45,6 +47,6 @@ def main():
     elif st.session_state.page == 'login':
             login.run()
         
-
+    
 if __name__ == "__main__":
     main()
