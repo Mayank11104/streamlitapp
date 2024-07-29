@@ -3,13 +3,14 @@ import home
 import login
 import toml
 from streamlit_option_menu import option_menu
+import os
 
 # This must be the first Streamlit command in your script
 st.set_page_config(layout="wide", menu_items={
     'About': "# This is a header. This is an *extremely* cool app!"
 })
-
-config = toml.load('.streamlit\config.toml')
+config_path = os.path.join('.streamlit', 'config.toml')
+config = toml.load(config_path)
 
 def main():
     # Initialize page and show_animation in session state if not already present
