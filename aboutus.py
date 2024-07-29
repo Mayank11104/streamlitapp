@@ -1,3 +1,5 @@
 import streamlit as st
-
-st.write("In progress")
+def run():
+  st.write("In progress")
+if __name__ == "__main__":
+    run()
