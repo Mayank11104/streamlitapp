@@ -4,11 +4,9 @@ import json
 import requests
 from streamlit_lottie import st_lottie
 import time
-
 def load_lottiefile(filepath: str):
     with open(filepath, "r") as f:
         return json.load(f)
-
 def load_lottieurl(url: str):
     r = requests.get(url)
     if r.status_code != 200:
@@ -20,14 +18,11 @@ def animsucc():
     msg.toast('Login successfull', icon = "🥳")
     time.sleep(1)
     st.balloons()
-
 def animunsucc():
     msg = st.toast('Gathering information')
     time.sleep(2)
     msg.toast('Oops! Something went wrong...', icon = "🥞")
     time.sleep(1)
-
-
 def create_connection():
     return mysql.connector.connect(
         host="127.0.0.1",
@@ -35,7 +30,6 @@ def create_connection():
         password="Shreeji@sql2024",
         database="accountdata"
     )
-
 def save_user(email, password, username):
     conn = create_connection()
     cursor = conn.cursor()
@@ -43,7 +37,6 @@ def save_user(email, password, username):
     conn.commit()
     cursor.close()
     conn.close()
-
 def authenticate_user(username, password):
     conn = create_connection()
     cursor = conn.cursor()
@@ -52,7 +45,6 @@ def authenticate_user(username, password):
     cursor.close()
     conn.close()
     return user is not None
-
 def run():
     lottie_code = load_lottiefile("loginanimation.json")
     st.markdown(
@@ -77,7 +69,6 @@ def run():
         """,
         unsafe_allow_html=True
     )
-    
     st.markdown(
         """
         <div style='text-align: left;'>
@@ -86,13 +77,12 @@ def run():
         """, 
         unsafe_allow_html=True
     )
-    
     @st.dialog("Sign in to your account", width="large")
     def signin():
         st.write("Sign in")
         username = st.text_input("Username")
         password = st.text_input("Password", type="password")
-        if st.button("Login"):
+        if st.button("Signin"):
             if username and password:
                 if authenticate_user(username, password):
                     animsucc()
@@ -106,15 +96,12 @@ def run():
             else:
                 animunsucc()
                 st.error("Please enter both username and password")
-
     @st.dialog("Sign up for a new account", width="large")
     def signup():
         st.write("Sign Up")
         email = st.text_input("Email")
         password = st.text_input("Password", type="password")
         username = st.text_input("Username")
-        
-        
         if st.button("Sign Up"):
             if username and email and password:
                 save_user(email, password, username)
@@ -122,7 +109,6 @@ def run():
                 st.rerun()
             else:
                 st.error("Please fill in all fields")
-
     col1, col2 = st.columns([0.7, 0.3])
     with col1:
         st_lottie(
@@ -135,15 +121,12 @@ def run():
             width=550,   # Adjust width
             key=None,
         )
-    
     with col2:
         if "user" not in st.session_state:
-            if st.button("Sign in"):
-                signin()
-            st.write("Already have an account? Please sign in")
-            if st.button("Sign up"):
+            if st.button("Sign in",on_click=signin()):
+                st.write("Already have an account? Please sign in")
+            if st.button("Sign up",on_click=signup()):
                 signup()
             st.write("Don't have an account? Please sign up")
-
 if __name__ == "__main__":
     run()
