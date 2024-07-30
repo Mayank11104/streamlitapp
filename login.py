@@ -87,7 +87,7 @@ def run():
         unsafe_allow_html=True
     )
     
-    @st.experimental_dialog("Sign in to your account", width="large")
+    @st.dialog("Sign in to your account", width="large")
     def signin():
         st.write("Sign in")
         username = st.text_input("Username")
@@ -107,7 +107,7 @@ def run():
                 animunsucc()
                 st.error("Please enter both username and password")
 
-    @st.experimental_dialog("Sign up for a new account", width="large")
+    @st.dialog("Sign up for a new account", width="large")
     def signup():
         st.write("Sign Up")
         email = st.text_input("Email")
