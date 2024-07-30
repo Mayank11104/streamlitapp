@@ -10,7 +10,7 @@ st.set_page_config(layout="wide", menu_items={
     'About': "# This is a header. This is an *extremely* cool app!"
 })
 # config_path = os.path.join('.streamlit', 'config.toml')
-config = toml.load('.streamlit\config.toml')
+# config = toml.load('.streamlit\config.toml')
 
 def main():
     # Initialize page and show_animation in session state if not already present
