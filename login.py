@@ -138,7 +138,7 @@ def run():
     
     with col2:
         if "user" not in st.session_state:
-            if st.button("Sign in",):
+            if st.button("Sign in"):
                 signin()
             st.write("Already have an account? Please sign in")
             if st.button("Sign up"):
