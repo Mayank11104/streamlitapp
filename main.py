@@ -27,7 +27,7 @@ def main():
         st.title('DASHBOARD')
         selected = option_menu(
             menu_title=None,
-            options=["Home", "Account","About us"],
+            options=["Home", "Account"],
             icons=["house", "person"],
             menu_icon="cast",
             default_index=0,
@@ -46,8 +46,8 @@ def main():
             home.run()
     elif st.session_state.page == 'login':
             login.run()
-    elif st.session_state.page == 'aboutus':
-            aboutus.run()
+    # elif st.session_state.page == 'aboutus':
+    #         aboutus.run()
     
 if __name__ == "__main__":
     main()
