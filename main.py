@@ -38,8 +38,8 @@ def main():
         st.session_state.page = 'home'
     elif selected == "Account":
         st.session_state.page = 'login'
-    elif selected=="About us":
-        st.session_state.page='aboutus'
+    # elif selected=="About us":
+    #     st.session_state.page='aboutus'
 
     # Page content
     if st.session_state.page == 'home':
