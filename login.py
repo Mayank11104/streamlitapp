@@ -65,6 +65,11 @@ def run():
             width: 50%;
             z-index: 0;
         }
+        @media (max-width: 768px) {
+            .animation {
+                max-width: 300px;
+            }
+        }
         </style>
         """,
         unsafe_allow_html=True
@@ -92,7 +97,7 @@ def run():
                     st.rerun()
                 else:
                     animunsucc()
-                    st.error("Invalid username or password")
+                    st.error("Incorrect username or password")
             else:
                 animunsucc()
                 st.error("Please enter both username and password")
@@ -104,8 +109,9 @@ def run():
         username = st.text_input("Username")
         if st.button("Sign Up"):
             if username and email and password:
+                animsucc()
+                time.sleep(1)
                 save_user(email, password, username)
-                st.success("Sign up successful!")
                 st.rerun()
             else:
                 st.error("Please fill in all fields")
@@ -117,8 +123,8 @@ def run():
             reverse=False,
             loop=True,
             quality='high',
-            height=550,  # Adjust height
-            width=550,   # Adjust width
+            height=None,  # Adjust height
+            width=None,   # Adjust width
             key=None,
         )
     with col2:
