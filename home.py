@@ -19,6 +19,13 @@ def run():
         <div style='text-align: left;'>
             <h1>Home Page</h1>
         </div>
+        <style>
+        @media (max-width: 768px) {
+            .animation {
+                max-width: 300px;
+            }
+        }
+        </style>
         """,
         unsafe_allow_html=True
     )
@@ -32,8 +39,8 @@ def run():
             reverse=False,
             loop=True,
             quality='high',
-            height=650,  # Adjust height
-            width=650,   # Adjust width
+            height=None,  # Adjust height
+            width=None,   # Adjust width
             key=None,
         )
    
